@@ -24,6 +24,24 @@ class ORM {
       console.error(chalk.red(error.message));
     }
   }
+  static remover(id){
+    if (typeof id !== 'number' || id < 1) {
+      throw new ObjetoInvalido();
+    }
+
+    if (this.vetor.length === 0) {
+      throw new ArrayVazio();
+    }
+    try{
+      this.vetor.forEach(element => {
+        if (element.id === this.id){
+          this.vetor.splice(id-1, 1);
+        }
+      })
+    }catch (error) {
+      console.error(chalk.red(error.message));
+    }
+  };
 
   static atualizar(id, objeto) {
     if (this.vetor.length === 0) {
